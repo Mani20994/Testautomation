@@ -1,10 +1,6 @@
-
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -12,11 +8,17 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
 public class NewToursDEMO1 {
+	WebDriver driver= new ChromeDriver();
 
-	public static void main(String[] args) throws InterruptedException, IOException {
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
+	@Test(priority = 1)
+
+
+
+public void start() throws IOException, InterruptedException {
+			System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		
@@ -82,7 +84,10 @@ public class NewToursDEMO1 {
 		//Submit
 		driver.findElement(By.xpath("//input[@type='image']")).click();	
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		
+	}
+		@Test(priority = 2)
+
+		public void Login()throws InterruptedException, Throwable {
 		//Click on Flights
 		driver.findElement(By.xpath("/html[1]/body[1]/div[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[1]/td[1]/table[1]/tbody[1]/tr[2]/td[2]/a[1]")).click(); 
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -209,6 +214,13 @@ public class NewToursDEMO1 {
 		 File file=ts.getScreenshotAs(OutputType.FILE);
 		org.apache.commons.io.FileUtils.copyFile(file, new File("D:\\screenb.jpeg"));
 		 System.out.println("Saved the screenshot");
+		
 		driver.close();
+		}
+		@Test(priority = 3)
+
+		public void quit() {
+		 
+		 driver.quit();
 		}
 }
